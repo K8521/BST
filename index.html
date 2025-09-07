@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>BST Visualizer (Web)</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+	<header class="app-header" role="banner">
+		<div class="brand">
+			<h1>Binary Search Tree Visualizer</h1>
+			<span class="badge">Modern</span>
+		</div>
+		<nav class="header-actions" aria-label="Header actions">
+			<button id="helpBtn" class="icon-btn" aria-label="Open help" title="Help">❓</button>
+			<button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+		</nav>
+	</header>
+
+	<main class="layout" role="main">
+		<aside class="sidebar" aria-label="Sidebar controls">
+			<section class="panel controls" aria-label="Controls">
+				<label for="valueInput">Value</label>
+				<input id="valueInput" type="number" inputmode="numeric" placeholder="Enter integer" aria-label="Enter integer value" />
+				<div class="btn-row">
+					<button id="insertBtn" aria-label="Insert value (Ctrl+I)">➕ Insert</button>
+					<button id="deleteBtn" aria-label="Delete value (Del)">🗑 Delete</button>
+					<button id="searchBtn" aria-label="Search value (Ctrl+F)">🔍 Search</button>
+					<button id="clearBtn" aria-label="Clear tree (Ctrl+L)">♻ Clear</button>
+				</div>
+			</section>
+
+			<section class="panel traversal" aria-label="Traversal">
+				<label for="traversalSelect">Traversal</label>
+				<select id="traversalSelect" aria-label="Traversal mode">
+					<option>Inorder</option>
+					<option>Preorder</option>
+					<option>Postorder</option>
+					<option>Levelorder</option>
+				</select>
+				<div class="btn-row">
+					<button id="traverseBtn" aria-label="Traverse instantly">⚡ Traverse</button>
+					<button id="animateBtn" aria-label="Animate traversal">▶ Animate</button>
+				</div>
+				<label for="speedRange">Speed</label>
+				<div class="speed-row">
+					<input id="speedRange" type="range" min="50" max="1000" step="50" value="300" aria-label="Animation speed" />
+					<span id="speedValue" class="speed-value" aria-hidden="true">300 ms</span>
+				</div>
+			</section>
+
+			<section class="panel stats" aria-label="Statistics">
+				<div class="stat"><span>Nodes</span><strong id="statCount">0</strong></div>
+				<div class="stat"><span>Height</span><strong id="statHeight">0</strong></div>
+				<div class="btn-row">
+					<button id="randomBtn" aria-label="Generate random tree">🎲 Random</button>
+					<button id="balancedBtn" aria-label="Generate balanced tree">⚖ Balanced</button>
+				</div>
+			</section>
+		</aside>
+
+		<section class="workspace" aria-label="Tree visualization">
+			<svg id="treeSvg" viewBox="0 0 1600 900" role="img" aria-label="Binary Search Tree"></svg>
+		</section>
+	</main>
+
+	<footer class="status-bar" role="status" aria-live="polite" id="statusBar">Ready</footer>
+
+	<div id="helpModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="helpTitle" aria-modal="true">
+		<div class="modal-content">
+			<h2 id="helpTitle">How to use</h2>
+			<ul>
+				<li>Insert/Delete/Search integers. Duplicates are ignored.</li>
+				<li>Select traversal, then Traverse or Animate.</li>
+				<li>Random creates a random tree; Balanced creates a balanced one.</li>
+				<li>Shortcuts: Ctrl+I Insert, Delete key Delete, Ctrl+F Search, Ctrl+L Clear.</li>
+			</ul>
+			<button id="closeHelp" class="primary">Close</button>
+		</div>
+	</div>
+
+	<script src="app.js"></script>
+</body>
+</html>
